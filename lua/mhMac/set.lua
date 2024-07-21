@@ -38,3 +38,5 @@ vim.filetype.add({
         templ = "templ",
     },
 })
+
+
