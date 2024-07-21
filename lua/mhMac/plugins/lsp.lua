@@ -23,6 +23,26 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
 
+        -- Define an on_attach function to only map the following keys
+        -- after the language server attaches to the current buffer
+        local on_attach = function(client, bufnr)
+            if vim.lsp then
+            local function format()
+                if vim.lsp.formatting_sync then
+                    vim.cmd('lua vim.lsp.buf.formatting_sync()<CR>')
+                else
+                end
+            end
+            -- Enable document formatting
+            if client.server_capabilities.documentFormattingProvider then
+                vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+                -- Keybinding for formatting
+                vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f","format" , { noremap = true, silent = false })
+            end
+            else
+                return ""
+            end
+        end
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -36,7 +56,6 @@ return {
                 "graphql",
                 "html",
                 "lua_ls",
-                "sqlls",
                 "svelte",
                 "tailwindcss",
                 "tsserver",
@@ -52,6 +71,7 @@ return {
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
+                        on_attach = on_attach,
                         capabilities = capabilities,
                         settings = {
                             Lua = {
