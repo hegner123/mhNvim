@@ -33,7 +33,7 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Oil)
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>F", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<leader>tcp", ToggleCopilot)
 

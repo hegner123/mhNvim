@@ -62,5 +62,6 @@ return {
     trouble,
     todo,
     undotree,
+    whichkey,
     zen,
 }
