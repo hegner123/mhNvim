@@ -27,18 +27,18 @@ return {
         -- after the language server attaches to the current buffer
         local on_attach = function(client, bufnr)
             if vim.lsp then
-            local function format()
-                if vim.lsp.formatting_sync then
-                    vim.cmd('lua vim.lsp.buf.formatting_sync()<CR>')
-                else
+                local function format()
+                    if vim.lsp.formatting_sync then
+                        vim.cmd('lua vim.lsp.buf.formatting_sync()<CR>')
+                    else
+                    end
                 end
-            end
-            -- Enable document formatting
-            if client.server_capabilities.documentFormattingProvider then
-                vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-                -- Keybinding for formatting
-                vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f","format" , { noremap = true, silent = false })
-            end
+                -- Enable document formatting
+                if client.server_capabilities.documentFormattingProvider then
+                    vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+                    -- Keybinding for formatting
+                    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "format", { noremap = true, silent = false })
+                end
             else
                 return ""
             end
@@ -118,7 +118,7 @@ return {
                 style = "minimal",
                 border = "rounded",
                 source = "always",
-                header = "",
+                header = "test",
                 prefix = "",
             },
         })

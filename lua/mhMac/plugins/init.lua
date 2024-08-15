@@ -10,9 +10,10 @@ local editorconfig = require("mhMac.plugins.editor_config")
 local emmet = require("mhMac.plugins.emmet")
 local eval = require("mhMac.plugins.eval")
 local fugitive = require("mhMac.plugins.fugitive")
-local harpoon = require("mhMac.plugins.harpoon")
+Harpoon = require("mhMac.plugins.harpoon")
 local hurl = require("mhMac.plugins.hurl")
 local how = require("mhMac.plugins.how")
+local imagePreview = require("mhMac.plugins.image_preview")
 local lsp = require("mhMac.plugins.lsp")
 local localPlugins = require("mhMac.plugins.local")
 local luaLine = require("mhMac.plugins.lualine")
@@ -21,7 +22,6 @@ local neotest = require("mhMac.plugins.neotest")
 local notify = require("mhMac.plugins.notify")
 local nvimIcons = require("mhMac.plugins.icons")
 local oil = require("mhMac.plugins.oil")
-local projects = require("mhMac.plugins.project")
 local snippets = require("mhMac.plugins.snippets")
 local telescope = require("mhMac.plugins.telescope")
 local telescopeFileBrowser = require("mhMac.plugins.telescope-file-browser")
@@ -44,9 +44,10 @@ return {
     emmet,
     eval,
     fugitive,
-    harpoon,
+    Harpoon,
     how,
     hurl,
+    imagePreview,
     localPlugins,
     lsp,
     luaLine,

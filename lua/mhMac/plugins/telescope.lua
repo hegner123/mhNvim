@@ -5,19 +5,40 @@ return {
 
     dependencies = {
         "nvim-lua/plenary.nvim",
-        "telescope-file-browser.nvim"
     },
 
     config = function()
-        require('telescope').setup({
-            file_browser = {
-                -- disables netrw and use telescope-file-browser in its place
-                hijack_netrw = true,
-            },
-        })
+        local actions = require('telescope.actions')
+        local action_state = require('telescope.actions.state')
+        local transform_mod = require('telescope.actions.mt').transform_mod
 
-        require("telescope").load_extension "file_browser"
+        local custom_actions = transform_mod({
+            replace_in_files = function(prompt_bufnr)
+                local current_picker = action_state.get_current_picker(prompt_bufnr)
+                local multi_selection = current_picker:get_multi_selection()
+                local search_text = vim.fn.input("Search for: ")
+                local replace_text = vim.fn.input("Replace with: ")
+
+                for _, entry in ipairs(multi_selection) do
+                    local cmd = string.format("sed -i 's/%s/%s/g' %s", search_text, replace_text, entry.path)
+                    os.execute(cmd)
+                end
+
+                actions.close(prompt_bufnr)
+            end
+        })
+        require('telescope').setup({
+            defaults = {
+                mappings = {
+                    i = {
+                        ["<C-r>"] = custom_actions.replace_in_files
+                    },
+                    n = {
+                        ["<C-r>"] = custom_actions.replace_in_files
+                    }
+                },
+            }
+        })
     end
 
 }
-

@@ -3,9 +3,8 @@ return {
         "folke/trouble.nvim",
         config = function()
             require("trouble").setup({
-                icons = true,
             })
-            vim.keymap.set("n", "<leader>tt", function()
+            vim.keymap.set("n", "<leader>xx", function()
                 require("trouble").toggle()
             end)
             vim.keymap.set("n", "[t", function()
@@ -14,6 +13,6 @@ return {
             vim.keymap.set("n", "]t", function()
                 require("trouble").previous({ skip_groups = true, jump = true });
             end)
-        end
+        end,
     },
 }
