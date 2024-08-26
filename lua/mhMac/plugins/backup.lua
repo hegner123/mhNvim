@@ -1,3 +1,4 @@
+
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -21,25 +22,30 @@ return {
             "force",
             {},
             vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities()
-        )
+            cmp_lsp.default_capabilities())
 
-        -- Define an on_attach function to map keys and enable formatting
+        -- Define an on_attach function to only map the following keys
+        -- after the language server attaches to the current buffer
         local on_attach = function(client, bufnr)
-            if client.server_capabilities.documentFormattingProvider then
-                vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-                vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>",
-                    { noremap = true, silent = true })
+            if vim.lsp then
+                local function format()
+                    if vim.lsp.formatting_sync then
+                        vim.cmd('lua vim.lsp.buf.formatting_sync()<CR>')
+                    else
+                    end
+                end
+                -- Enable document formatting
+                if client.server_capabilities.documentFormattingProvider then
+                    vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+                    -- Keybinding for formatting
+                    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "format", { noremap = true, silent = false })
+                end
+            else
+                return ""
             end
         end
-
-        -- Setup fidget.nvim
         require("fidget").setup({})
-
-        -- Setup mason.nvim
         require("mason").setup()
-
-        -- Setup mason-lspconfig
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "clangd",
@@ -49,7 +55,7 @@ return {
                 "gopls",
                 "golangci_lint_ls",
                 "graphql",
-                "pico8_ls",
+                "pico8-ls",
                 "html",
                 "lua_ls",
                 "svelte",
@@ -58,35 +64,39 @@ return {
                 "zls"
             },
             handlers = {
-                function(server_name)
-                    require("lspconfig")[server_name].setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                    })
+                function(server_name) -- default handler (optional)
+                    require("lspconfig")[server_name].setup {
+                        capabilities = capabilities
+                    }
                 end,
+
                 ["lua_ls"] = function()
-                    require("lspconfig").lua_ls.setup({
+                    local lspconfig = require("lspconfig")
+                    lspconfig.lua_ls.setup {
                         on_attach = on_attach,
                         capabilities = capabilities,
                         settings = {
                             Lua = {
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                },
-                            },
+                                }
+                            }
                         },
-                    })
+                        lspconfig.golangci_lint_ls.setup({}),
+                        lspconfig.gopls.setup({}),
+
+                        lspconfig.emmet_language_server.setup({}),
+                    }
                 end,
-            },
+            }
         })
 
-        -- Setup nvim-cmp
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
             snippet = {
                 expand = function(args)
-                    require('luasnip').lsp_expand(args.body)
+                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
                 end,
             },
             mapping = cmp.mapping.preset.insert({
@@ -97,20 +107,22 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
-                { name = 'luasnip' },
+                { name = 'luasnip' }, -- For luasnip users.
             }, {
                 { name = 'buffer' },
-            }),
+            })
         })
 
-        -- Configure diagnostics
         vim.diagnostic.config({
+            -- update_in_insert = true,
             float = {
                 focusable = false,
                 style = "minimal",
                 border = "rounded",
                 source = "always",
+                header = "test",
+                prefix = "",
             },
         })
-    end,
+    end
 }

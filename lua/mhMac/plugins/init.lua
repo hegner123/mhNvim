@@ -10,6 +10,7 @@ local editorconfig = require("mhMac.plugins.editor_config")
 local emmet = require("mhMac.plugins.emmet")
 local eval = require("mhMac.plugins.eval")
 local fugitive = require("mhMac.plugins.fugitive")
+local gitConflict = require("mhMac.plugins.git-conflict")
 Harpoon = require("mhMac.plugins.harpoon")
 local hurl = require("mhMac.plugins.hurl")
 local how = require("mhMac.plugins.how")
@@ -44,6 +45,7 @@ return {
     emmet,
     eval,
     fugitive,
+    gitConflict,
     Harpoon,
     how,
     hurl,

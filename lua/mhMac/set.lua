@@ -38,5 +38,9 @@ vim.filetype.add({
         templ = "templ",
     },
 })
-
-
+vim.filetype.add({
+    etension = {
+        p8 = "p8",
+        pico8="p8",
+    }
+})
