@@ -23,6 +23,7 @@ local neotest = require("mhMac.plugins.neotest")
 local notify = require("mhMac.plugins.notify")
 local nvimIcons = require("mhMac.plugins.icons")
 local oil = require("mhMac.plugins.oil")
+local pqf = require("mhMac.plugins.pretty-quick-fix")
 local snippets = require("mhMac.plugins.snippets")
 local telescope = require("mhMac.plugins.telescope")
 local telescopeFileBrowser = require("mhMac.plugins.telescope-file-browser")
@@ -58,6 +59,7 @@ return {
     notify,
     nvimIcons,
     oil,
+    pqf,
     snippets,
     telescope,
     telescopeFileBrowser,
