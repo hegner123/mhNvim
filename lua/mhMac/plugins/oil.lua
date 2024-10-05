@@ -10,6 +10,8 @@ return {
             "size",
             -- "mtime",
         },
+        delete_to_trash = true,
+        watch_for_changes = true,
     },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },

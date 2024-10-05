@@ -3,10 +3,13 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp-document-symbol",
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
@@ -54,7 +57,6 @@ return {
                 "lua_ls",
                 "svelte",
                 "tailwindcss",
-                "tsserver",
                 "zls"
             },
             handlers = {
@@ -96,11 +98,19 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' },
+                    { name = 'nvim_lsp' },
+                    { name = 'luasnip' },
+                    { name = 'nvim_lsp_signature_help' },
+                    { name = 'nvim_lua' },
+                },
+                { { name = 'buffer' } }),
+        })
+        cmp.setup.cmdline('/', {
+            sources = cmp.config.sources({
+                { name = 'nvim_lsp_document_symbol' }
             }, {
-                { name = 'buffer' },
-            }),
+                { name = 'buffer' }
+            })
         })
 
         -- Configure diagnostics
