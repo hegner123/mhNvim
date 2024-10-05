@@ -20,6 +20,7 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+vim.opt.background = 'dark'
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
