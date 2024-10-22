@@ -112,15 +112,14 @@ return {
                 { name = 'buffer' }
             })
         })
-
-        -- Configure diagnostics
         vim.diagnostic.config({
             float = {
                 focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = "always",
+                scope = "line",
+                border = "solid",
+                source = "if_many",
             },
         })
+        vim.diagnostic.setqflist()
     end,
 }
