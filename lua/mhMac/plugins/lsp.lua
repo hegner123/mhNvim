@@ -6,8 +6,6 @@ return {
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp-document-symbol",
         "hrsh7th/nvim-cmp",
@@ -31,8 +29,6 @@ return {
         local on_attach = function(client, bufnr)
             if client.server_capabilities.documentFormattingProvider then
                 vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-                vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>",
-                    { noremap = true, silent = true })
             end
         end
 
@@ -79,6 +75,24 @@ return {
                         },
                     })
                 end,
+                ["emmet_ls"] = function()
+                    require("lspconfig").emmet_ls.setup({
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
+                    })
+                end,
+                ["intelephense"] = function()
+                    require("lspconfig").intelephense.setup {
+                        settings = {
+                            intelephense = {
+                                environment = {
+                                    includePaths = { "./vendor/php-stubs/**/*.php" }
+                                },
+                            }
+                        }
+                    }
+                end,
             },
         })
 
@@ -120,6 +134,5 @@ return {
                 source = "if_many",
             },
         })
-        vim.diagnostic.setqflist()
     end,
 }

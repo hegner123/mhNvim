@@ -1,5 +1,4 @@
 return {
-    {
         "luissimas/eval.nvim",
         config = function()
             require("eval").setup({
@@ -18,5 +17,4 @@ return {
                 },
             })
         end
-    }
 }

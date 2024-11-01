@@ -1,9 +1,11 @@
 local alda = require("mhMac.plugins.alda")
 local cellular = require("mhMac.plugins.cellular_automation")
 local cloak = require("mhMac.plugins.cloak")
+local cmpmh = require("mhMac.plugins.cmpmh")
 local cheatsheet = require("mhMac.plugins.cheatsheet")
 local colors = require("mhMac.plugins.colors")
 local dashboard = require("mhMac.plugins.dashboard")
+local dotnet = require("mhMac.plugins.dotnet")
 local editorconfig = require("mhMac.plugins.editor_config")
 local emmet = require("mhMac.plugins.emmet")
 local eval = require("mhMac.plugins.eval")
@@ -17,6 +19,7 @@ local imagePreview = require("mhMac.plugins.image_preview")
 local lsp = require("mhMac.plugins.lsp")
 local localPlugins = require("mhMac.plugins.local")
 local luaLine = require("mhMac.plugins.lualine")
+local multiCursor = require("mhMac.plugins.multi-cursor")
 local neogen = require("mhMac.plugins.neogen")
 local neotest = require("mhMac.plugins.neotest")
 local notify = require("mhMac.plugins.notify")
@@ -39,10 +42,12 @@ local zen = require("mhMac.plugins.zenmode")
 return {
     alda,
     cellular,
-    cloak,
     cheatsheet,
+    cloak,
+    cmpmh,
     colors,
     dashboard,
+    dotnet,
     editorconfig,
     emmet,
     eval,
@@ -50,11 +55,13 @@ return {
     fugitive,
     gitConflict,
     Harpoon,
+--    how,
     hurl,
     imagePreview,
     localPlugins,
     lsp,
     luaLine,
+--    multiCursor,
     neogen,
     neotest,
     notify,
@@ -77,16 +84,6 @@ return {
         -- You can define custom key maps here. If present, the description will
         -- be shown in the help menu.
         -- To disable one of the defaults, set it to false.
-
-        ["<localleader>L"] = {
-            function(plugin)
-                require("lazy.util").float_term({ "lazygit", "log" }, {
-                    cwd = plugin.dir,
-                })
-            end,
-            desc = "Open lazygit log",
-        },
-
         ["<localleader>T"] = {
             function(plugin)
                 require("lazy.util").float_term(nil, {
