@@ -31,10 +31,10 @@ return {
             defaults = {
                 mappings = {
                     i = {
-                        ["<C-r>"] = custom_actions.replace_in_files
+                        ["<C-R>"] = custom_actions.replace_in_files
                     },
                     n = {
-                        ["<C-r>"] = custom_actions.replace_in_files
+                        ["<C-R>"] = custom_actions.replace_in_files
                     }
                 },
             }

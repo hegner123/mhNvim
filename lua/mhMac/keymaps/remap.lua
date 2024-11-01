@@ -12,5 +12,5 @@ vim.api.nvim_set_keymap('n', '<leader>lr', ':Telescope lsp_references<CR>', { no
 vim.api.nvim_set_keymap('n', '<leader>lt', ':Telescope lsp_type_definitions<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lg', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-r>', ':redo<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ie', 'oif err!=nil {<CR>return<CR>}<Esc>',{noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader>aa', 'A;<Esc>',{noremap=true,silent=true})
+vim.api.nvim_set_keymap('n', '<leader>ie', 'oif err!=nil {<CR>return<CR>}<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>aa', 'A;<Esc>', { noremap = true, silent = true })
