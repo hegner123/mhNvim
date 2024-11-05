@@ -5,6 +5,7 @@ local cmpmh = require("mhMac.plugins.cmpmh")
 local cheatsheet = require("mhMac.plugins.cheatsheet")
 local colors = require("mhMac.plugins.colors")
 local dashboard = require("mhMac.plugins.dashboard")
+local dap = require("mhMac.plugins.dap")
 local dotnet = require("mhMac.plugins.dotnet")
 local editorconfig = require("mhMac.plugins.editor_config")
 local emmet = require("mhMac.plugins.emmet")
@@ -13,6 +14,7 @@ local fugitive = require("mhMac.plugins.fugitive")
 local fugit = require("mhMac.plugins.fugit")
 local gitConflict = require("mhMac.plugins.git-conflict")
 Harpoon = require("mhMac.plugins.harpoon")
+local haunt = require("mhMac.plugins.haunt")
 local hurl = require("mhMac.plugins.hurl")
 local how = require("mhMac.plugins.how")
 local imagePreview = require("mhMac.plugins.image_preview")
@@ -30,6 +32,7 @@ local oilPlay = require("mhMac.plugins.oil-play-extension")
 local plenary = require("mhMac.plugins.plenary")
 local pqf = require("mhMac.plugins.pretty-quick-fix")
 local snippets = require("mhMac.plugins.snippets")
+local surround = require("mhMac.plugins.surround")
 local telescope = require("mhMac.plugins.telescope")
 local telescopeFileBrowser = require("mhMac.plugins.telescope-file-browser")
 local todo = require("mhMac.plugins.todo")
@@ -46,6 +49,7 @@ return {
     cloak,
     cmpmh,
     colors,
+    dap,
     dashboard,
     dotnet,
     editorconfig,
@@ -55,13 +59,10 @@ return {
     fugitive,
     gitConflict,
     Harpoon,
---    how,
+    haunt,
     hurl,
- --   imagePreview,
- --   localPlugins,
     lsp,
     luaLine,
---    multiCursor,
     neogen,
     neotest,
     notify,
@@ -71,6 +72,7 @@ return {
     plenary,
     pqf,
     snippets,
+    surround,
     telescope,
     telescopeFileBrowser,
     treesitter,
@@ -80,11 +82,12 @@ return {
     vgit,
     whichkey,
     zen,
+    --"adigitoleo/haunt.nvim",
     custom_keys = {
         -- You can define custom key maps here. If present, the description will
         -- be shown in the help menu.
         -- To disable one of the defaults, set it to false.
-        ["<localleader>T"] = {
+        ["<leader>T"] = {
             function(plugin)
                 require("lazy.util").float_term(nil, {
                     cwd = plugin.dir,
