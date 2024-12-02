@@ -31,6 +31,7 @@ local oil = require("mhMac.plugins.oil")
 local oilPlay = require("mhMac.plugins.oil-play-extension")
 local plenary = require("mhMac.plugins.plenary")
 local pqf = require("mhMac.plugins.pretty-quick-fix")
+local snacks=require("mhMac.plugins.snacks")
 local snippets = require("mhMac.plugins.snippets")
 local surround = require("mhMac.plugins.surround")
 local telescope = require("mhMac.plugins.telescope")
@@ -71,6 +72,7 @@ return {
     oil,
     plenary,
     pqf,
+    snacks,
     snippets,
     surround,
     telescope,

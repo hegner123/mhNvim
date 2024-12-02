@@ -1,3 +1,5 @@
 require("mhMac.set")
 require("mhMac.pluginSetup")
 require("mhMac.keymaps.remap")
+require("mhMac.keymaps.funcs")
+require("mhMac.auto.clear")

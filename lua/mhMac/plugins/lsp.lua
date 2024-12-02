@@ -14,7 +14,6 @@ return {
         "j-hui/fidget.nvim",
         "olrtg/emmet-language-server"
     },
-
     config = function()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -44,30 +43,23 @@ return {
                 "angularls",
                 "azure_pipelines_ls",
                 "bashls",
-                "buf",
-                "cbfmt",
                 "clangd",
                 "cmake",
                 "csharp_ls",
                 "cssls",
                 "css_variables",
                 "cssmodules_ls",
-                "custom_elements_ls",
-                "delve",
                 "docker_compose_language_service",
                 "dockerls",
                 "emmet_language_server",
                 "emmet_ls",
-                "goimports",
                 "gopls",
-                "gotests",
-                "html-lsp",
-                "htmx-lsp",
+                "html",
+                "htmx",
                 "intelephense",
                 "java_language_server",
-                "jq-lsp",
+                "jsonls",
                 "jqls",
-                "json-lsp",
                 "lua_ls",
                 "nginx_language_server",
                 "pico8_ls",
@@ -75,8 +67,6 @@ return {
                 "pyright",
                 "pylsp",
                 "somesass_ls",
-                "sqlls",
-                "sqls",
                 "svelte",
                 "tailwindcss",
                 "templ",
@@ -98,9 +88,21 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
+                                runtime = {
+                                    version = 'LuaJIT',                  -- Specify the Lua version
+                                    path = vim.split(package.path, ';'), -- Include default Lua paths
+                                },
+                                workspace = {
+                                    -- Add the Neovim source directory as a workspace
+                                    library = {
+                                        [vim.fn.expand("/Users/home/Documents/Code/neovim")] = true,
+                                    },
+                                    checkThirdParty = false, -- Disable third-party library checking
+                                },
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
                                 },
+                                telemetry = { enable = false },
                             },
                         },
                     })
@@ -122,6 +124,17 @@ return {
                             }
                         }
                     }
+                end,
+                ["gopls"] = function()
+                    require("lspconfig").gopls.setup({
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        settings = {
+                            gopls = {
+                                gofumpt = true
+                            }
+                        }
+                    })
                 end,
             },
         })
