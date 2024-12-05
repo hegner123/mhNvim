@@ -10,7 +10,6 @@ local dotnet = require("mhMac.plugins.dotnet")
 local editorconfig = require("mhMac.plugins.editor_config")
 local emmet = require("mhMac.plugins.emmet")
 local eval = require("mhMac.plugins.eval")
-local fugitive = require("mhMac.plugins.fugitive")
 local fugit = require("mhMac.plugins.fugit")
 local gitConflict = require("mhMac.plugins.git-conflict")
 Harpoon = require("mhMac.plugins.harpoon")
@@ -29,8 +28,10 @@ local nvimClip = require("mhMac.plugins.nvim-clip")
 local nvimIcons = require("mhMac.plugins.icons")
 local oil = require("mhMac.plugins.oil")
 local oilPlay = require("mhMac.plugins.oil-play-extension")
+local overseer = require("mhMac.plugins.overseer")
 local plenary = require("mhMac.plugins.plenary")
 local pqf = require("mhMac.plugins.pretty-quick-fix")
+local project = require("mhMac.plugins.project")
 local snacks=require("mhMac.plugins.snacks")
 local snippets = require("mhMac.plugins.snippets")
 local surround = require("mhMac.plugins.surround")
@@ -57,7 +58,6 @@ return {
     emmet,
     eval,
     fugit,
-    fugitive,
     gitConflict,
     Harpoon,
     haunt,
@@ -70,8 +70,10 @@ return {
     nvimClip,
     nvimIcons,
     oil,
+    overseer,
     plenary,
     pqf,
+    project,
     snacks,
     snippets,
     surround,

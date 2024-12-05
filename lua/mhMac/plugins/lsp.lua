@@ -63,10 +63,8 @@ return {
                 "lua_ls",
                 "nginx_language_server",
                 "pico8_ls",
-                "puppet",
                 "pyright",
                 "pylsp",
-                "somesass_ls",
                 "svelte",
                 "tailwindcss",
                 "templ",
@@ -96,6 +94,7 @@ return {
                                     -- Add the Neovim source directory as a workspace
                                     library = {
                                         [vim.fn.expand("/Users/home/Documents/Code/neovim")] = true,
+                                        [vim.fn.expand("/Users/home/.local/share/lazy")] = true,
                                     },
                                     checkThirdParty = false, -- Disable third-party library checking
                                 },
