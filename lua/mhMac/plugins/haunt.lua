@@ -3,8 +3,8 @@ return {
     config = function()
         require("haunt").setup {
             window = {
-                width_frac = 0.7,
-                height_frac = 0.7,
+                width_frac = 0.9,
+                height_frac = 0.9,
                 winblend = 0,
                 title_pos = "center",
             },
