@@ -1,7 +1,7 @@
 local alda = require("mhMac.plugins.alda")
 local cellular = require("mhMac.plugins.cellular_automation")
 local cloak = require("mhMac.plugins.cloak")
-local cmpmh = require("mhMac.plugins.cmpmh")
+local cmp = require("mhMac.plugins.cmpmh")
 local cheatsheet = require("mhMac.plugins.cheatsheet")
 local colors = require("mhMac.plugins.colors")
 local dashboard = require("mhMac.plugins.dashboard")
@@ -49,7 +49,7 @@ return {
     cellular,
     cheatsheet,
     cloak,
-    cmpmh,
+    cmp,
     colors,
     dap,
     dashboard,

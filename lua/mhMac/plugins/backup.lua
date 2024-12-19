@@ -16,7 +16,7 @@ return {
     },
 
     config = function()
-        local cmp = require('lua.mhMac.plugins.cmpmh')
+        local cmp = require('lua.mhMac.plugins.cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
             "force",

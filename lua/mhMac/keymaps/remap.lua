@@ -43,3 +43,4 @@ vim.keymap.set('i', ';;', '<Right>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>ss', ':%s@TEXT@ TEXT@g| %s@INTEGER@ INTEGER@g', { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
+

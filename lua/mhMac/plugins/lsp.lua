@@ -3,75 +3,29 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp-document-symbol",
-        "hrsh7th/nvim-cmp",
-        "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
-        "olrtg/emmet-language-server"
+        "olrtg/emmet-language-server",
     },
     config = function()
-        local cmp = require('cmp')
-        local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
             vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities()
+            require("cmp_nvim_lsp").default_capabilities()
         )
 
-        -- Define an on_attach function to map keys and enable formatting
         local on_attach = function(client, bufnr)
             if client.server_capabilities.documentFormattingProvider then
                 vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
             end
         end
 
-        -- Setup fidget.nvim
         require("fidget").setup({})
-
-        -- Setup mason.nvim
         require("mason").setup()
-
-        -- Setup mason-lspconfig
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "angularls",
-                "azure_pipelines_ls",
-                "bashls",
-                "clangd",
-                "cmake",
-                "csharp_ls",
-                "cssls",
-                "css_variables",
-                "cssmodules_ls",
-                "docker_compose_language_service",
-                "dockerls",
-                "emmet_language_server",
-                "emmet_ls",
-                "gopls",
-                "html",
-                "htmx",
-                "intelephense",
-                "java_language_server",
-                "jsonls",
-                "jqls",
-                "lua_ls",
-                "nginx_language_server",
-                "pico8_ls",
-                "pyright",
-                "pylsp",
-                "svelte",
-                "tailwindcss",
-                "templ",
-                "ts_ls",
-                "yamlls",
-                "zls"
-
+                "bashls", "clangd", "lua_ls", "pyright", "gopls", "intelephense",
+                "html", "cssls", "tailwindcss", "yamlls", "zls",
             },
             handlers = {
                 function(server_name)
@@ -86,21 +40,9 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
-                                runtime = {
-                                    version = 'LuaJIT',                  -- Specify the Lua version
-                                    path = vim.split(package.path, ';'), -- Include default Lua paths
-                                },
-                                workspace = {
-                                    -- Add the Neovim source directory as a workspace
-                                    library = {
-                                        [vim.fn.expand("/Users/home/Documents/Code/neovim")] = true,
-                                        [vim.fn.expand("/Users/home/.local/share/lazy")] = true,
-                                    },
-                                    checkThirdParty = false, -- Disable third-party library checking
-                                },
-                                diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                },
+                                runtime = { version = 'LuaJIT' },
+                                diagnostics = { globals = { "vim" } },
+                                workspace = { library = vim.api.nvim_get_runtime_file("", true) },
                                 telemetry = { enable = false },
                             },
                         },
@@ -110,64 +52,12 @@ return {
                     require("lspconfig").emmet_ls.setup({
                         on_attach = on_attach,
                         capabilities = capabilities,
-                        filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
-                    })
-                end,
-                ["intelephense"] = function()
-                    require("lspconfig").intelephense.setup {
-                        settings = {
-                            intelephense = {
-                                environment = {
-                                    includePaths = { "./vendor/php-stubs/**/*.php" }
-                                },
-                            }
-                        }
-                    }
-                end,
-                ["gopls"] = function()
-                    require("lspconfig").gopls.setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                        settings = {
-                            gopls = {
-                                gofumpt = true
-                            }
-                        }
+                        filetypes = { "html", "css", "javascriptreact", "typescriptreact" },
                     })
                 end,
             },
         })
 
-        -- Setup nvim-cmp
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-        cmp.setup({
-            snippet = {
-                expand = function(args)
-                    require('luasnip').lsp_expand(args.body)
-                end,
-            },
-            mapping = cmp.mapping.preset.insert({
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                ["<C-Space>"] = cmp.mapping.complete(),
-            }),
-            sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
-                    { name = 'nvim_lsp_signature_help' },
-                    { name = 'nvim_lua' },
-                },
-                { { name = 'buffer' } }),
-        })
-        cmp.setup.cmdline('/', {
-            sources = cmp.config.sources({
-                { name = 'nvim_lsp_document_symbol' }
-            }, {
-                { name = 'buffer' }
-            })
-        })
         vim.diagnostic.config({
             float = {
                 focusable = false,
@@ -178,3 +68,4 @@ return {
         })
     end,
 }
+
