@@ -1,4 +1,16 @@
+Colors = {
+    "rebelot/kanagawa.nvim",
+    config = function()
+        require('kanagawa').setup({})
+    end,
+    {
+        "LazyVim/LazyVim",
+        opts = {
+            colorscheme = "kanagawa-dragon",
+        },
 
+    },
+}
 return {
     "neovim/nvim-lspconfig",
     dependencies = {

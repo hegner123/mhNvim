@@ -13,11 +13,6 @@ return {
         quickfile = { enabled = true },
         statuscolumn = { enabled = true },
         words = { enabled = true },
-        styles = {
-            notification = {
-                wo = { wrap = true } -- Wrap notifications
-            }
-        }
     },
     keys = {
         { "<leader>.",  function() Snacks.scratch() end,                 desc = "Toggle Scratch Buffer" },
@@ -77,10 +72,9 @@ return {
                     :map("<leader>uc")
                 Snacks.toggle.treesitter():map("<leader>uT")
                 Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map(
-                "<leader>ub")
+                    "<leader>ub")
                 Snacks.toggle.inlay_hints():map("<leader>uh")
             end,
         })
     end,
 }
-
