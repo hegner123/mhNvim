@@ -23,7 +23,6 @@ local luaLine = require("mhMac.plugins.lualine")
 local multiCursor = require("mhMac.plugins.multi-cursor")
 local neogen = require("mhMac.plugins.neogen")
 local neotest = require("mhMac.plugins.neotest")
-local notify = require("mhMac.plugins.notify")
 local nvimClip = require("mhMac.plugins.nvim-clip")
 local nvimIcons = require("mhMac.plugins.icons")
 local oil = require("mhMac.plugins.oil")
@@ -32,7 +31,7 @@ local overseer = require("mhMac.plugins.overseer")
 local plenary = require("mhMac.plugins.plenary")
 local pqf = require("mhMac.plugins.pretty-quick-fix")
 local project = require("mhMac.plugins.project")
-local snacks=require("mhMac.plugins.snacks")
+local snacks = require("mhMac.plugins.snacks")
 local snippets = require("mhMac.plugins.snippets")
 local surround = require("mhMac.plugins.surround")
 local telescope = require("mhMac.plugins.telescope")
@@ -66,7 +65,6 @@ return {
     luaLine,
     neogen,
     neotest,
-    notify,
     nvimClip,
     nvimIcons,
     oil,
@@ -87,17 +85,4 @@ return {
     whichkey,
     zen,
     --"adigitoleo/haunt.nvim",
-    custom_keys = {
-        -- You can define custom key maps here. If present, the description will
-        -- be shown in the help menu.
-        -- To disable one of the defaults, set it to false.
-        ["<leader>T"] = {
-            function(plugin)
-                require("lazy.util").float_term(nil, {
-                    cwd = plugin.dir,
-                })
-            end,
-            desc = "Open terminal in plugin dir",
-        },
-    },
 }

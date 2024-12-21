@@ -1,9 +1,6 @@
 return {
-
     'MoaidHathot/dotnet.nvim',
-        config = function()
-            require("dotnet").setup({})
-        end
-
-
+    config = function()
+        require("dotnet").setup({})
+    end
 }
