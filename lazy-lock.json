@@ -22,6 +22,7 @@
   "git-conflict.nvim": { "branch": "main", "commit": "4bbfdd92d547d2862a75b4e80afaf30e73f7bbb4" },
   "harpoon": { "branch": "harpoon2", "commit": "ed1f853847ffd04b2b61c314865665e1dadf22c7" },
   "haunt.nvim": { "branch": "master", "commit": "5f96968844f77fef4756df0f14b9d8e9077691e0" },
+  "how": { "branch": "main", "commit": "2f2479b7ec15c5b4be9bfa4574a597b0ab675b21" },
   "hurl.nvim": { "branch": "main", "commit": "33ff81c0027c1d0071174eb40257010c7ce61e62" },
   "kanagawa.nvim": { "branch": "master", "commit": "debe91547d7fb1eef34ce26a5106f277fbfdd109" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },

@@ -58,6 +58,7 @@ return {
     gitConflict,
     harpoon,
     haunt,
+    how,
     hurl,
     lsp,
     luaLine,
