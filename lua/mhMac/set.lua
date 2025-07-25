@@ -41,7 +41,7 @@ vim.filetype.add({
     },
 })
 vim.filetype.add({
-    etension = {
+    extension = {
         p8 = "p8",
         pico8="p8",
     }
