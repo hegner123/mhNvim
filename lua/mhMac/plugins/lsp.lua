@@ -3,7 +3,7 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "j-hui/fidget.nvim",
+        -- "j-hui/fidget.nvim",
         "olrtg/emmet-language-server",
     },
     config = function()
@@ -20,7 +20,18 @@ return {
             end
         end
 
-        require("fidget").setup({})
+        -- require("fidget").setup({
+        --     notification = {
+        --         window = {
+        --             winblend = 0,
+        --         },
+        --     },
+        --     progress = {
+        --         display = {
+        --             progress_icon = { pattern = "dots", period = 1 },
+        --         },
+        --     },
+        -- })
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {

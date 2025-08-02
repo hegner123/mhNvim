@@ -1,6 +1,5 @@
 local alda = require("mhMac.plugins.alda")
 local cellular = require("mhMac.plugins.cellular_automation")
-local cloak = require("mhMac.plugins.cloak")
 local cmp = require("mhMac.plugins.cmpmh")
 local cheatsheet = require("mhMac.plugins.cheatsheet")
 local colors = require("mhMac.plugins.colors")
@@ -10,7 +9,6 @@ local dotnet = require("mhMac.plugins.dotnet")
 local editorconfig = require("mhMac.plugins.editor_config")
 local emmet = require("mhMac.plugins.emmet")
 local eval = require("mhMac.plugins.eval")
-local gitConflict = require("mhMac.plugins.git-conflict")
 local harpoon = require("mhMac.plugins.harpoon")
 local haunt = require("mhMac.plugins.haunt")
 local hurl = require("mhMac.plugins.hurl")
@@ -46,7 +44,6 @@ return {
     alda,
     cellular,
     cheatsheet,
-    cloak,
     cmp,
     colors,
     dap,
@@ -55,7 +52,6 @@ return {
     editorconfig,
     emmet,
     eval,
-    gitConflict,
     harpoon,
     haunt,
     how,
