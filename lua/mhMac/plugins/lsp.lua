@@ -15,8 +15,13 @@ return {
         )
 
         local on_attach = function(client, bufnr)
+            -- Ensure bufnr is valid
+            if not bufnr or type(bufnr) ~= "number" then
+                bufnr = vim.api.nvim_get_current_buf()
+            end
+
             if client.server_capabilities.documentFormattingProvider then
-                vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+                vim.api.nvim_buf_set_var(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
             end
         end
 

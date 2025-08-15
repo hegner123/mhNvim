@@ -7,7 +7,7 @@ vim.api.nvim_create_user_command(
             root_dir = vim.fn.getcwd(),
         })
         local lsp_name = "pico8-ls"
-        local clients = vim.lsp.get_active_clients()
+        local clients = vim.lsp.get_clients()
         local bufnr = vim.api.nvim_get_current_buf()
 
         for _, client in ipairs(clients) do

@@ -19,6 +19,15 @@ return {
         -- Load friendly snippets
         require("luasnip.loaders.from_vscode").lazy_load()
 
+        -- Add error handling for LSP operations
+        local original_make_position_params = vim.lsp.util.make_position_params
+        vim.lsp.util.make_position_params = function(window, offset_encoding)
+            if window and not vim.api.nvim_win_is_valid(window) then
+                window = vim.api.nvim_get_current_win()
+            end
+            return original_make_position_params(window, offset_encoding)
+        end
+
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
@@ -26,6 +35,9 @@ return {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
                 end,
+            },
+            completion = {
+                completeopt = "menu,menuone,noinsert",
             },
             mapping = cmp.mapping.preset.insert({
                 ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -35,7 +47,15 @@ return {
                 ["<C-e>"] = cmp.mapping.abort(),
             }),
             sources = cmp.config.sources({
-                { name = "nvim_lsp" },
+                { 
+                    name = "nvim_lsp",
+                    entry_filter = function(entry, ctx)
+                        -- Validate window and buffer exist
+                        local win = vim.api.nvim_get_current_win()
+                        local buf = vim.api.nvim_get_current_buf()
+                        return vim.api.nvim_win_is_valid(win) and vim.api.nvim_buf_is_valid(buf)
+                    end
+                },
                 { name = "luasnip" },
                 { name = "nvim_lsp_signature_help" },
                 { name = "buffer" },

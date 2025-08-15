@@ -13,17 +13,13 @@ local harpoon = require("mhMac.plugins.harpoon")
 local haunt = require("mhMac.plugins.haunt")
 local hurl = require("mhMac.plugins.hurl")
 local how = require("mhMac.plugins.how")
-local imagePreview = require("mhMac.plugins.image_preview")
 local lsp = require("mhMac.plugins.lsp")
-local localPlugins = require("mhMac.plugins.local")
 local luaLine = require("mhMac.plugins.lualine")
-local multiCursor = require("mhMac.plugins.multi-cursor")
 local neogen = require("mhMac.plugins.neogen")
 local neotest = require("mhMac.plugins.neotest")
 local nvimClip = require("mhMac.plugins.nvim-clip")
-local nvimIcons = require("mhMac.plugins.icons")
+local icons = require("mhMac.plugins.icons")
 local oil = require("mhMac.plugins.oil")
-local oilPlay = require("mhMac.plugins.oil-play-extension")
 local overseer = require("mhMac.plugins.overseer")
 local plenary = require("mhMac.plugins.plenary")
 local pqf = require("mhMac.plugins.pretty-quick-fix")
@@ -32,11 +28,9 @@ local snacks = require("mhMac.plugins.snacks")
 local snippets = require("mhMac.plugins.snippets")
 local surround = require("mhMac.plugins.surround")
 local telescope = require("mhMac.plugins.telescope")
-local telescopeFileBrowser = require("mhMac.plugins.telescope-file-browser")
 local todo = require("mhMac.plugins.todo")
 local treesitter = require("mhMac.plugins.treesitter")
 local trouble = require("mhMac.plugins.trouble")
-local undotree = require("mhMac.plugins.undotree")
 local vgit = require("mhMac.plugins.vgit")
 local whichkey = require("mhMac.plugins.which")
 local zen = require("mhMac.plugins.zenmode")
@@ -56,12 +50,12 @@ return {
     haunt,
     how,
     hurl,
+    icons,
     lsp,
     luaLine,
     neogen,
     neotest,
     nvimClip,
-    nvimIcons,
     oil,
     overseer,
     plenary,
@@ -71,13 +65,10 @@ return {
     snippets,
     surround,
     telescope,
-    telescopeFileBrowser,
     treesitter,
     trouble,
     todo,
-    undotree,
     vgit,
     whichkey,
     zen,
-    --"adigitoleo/haunt.nvim",
 }
