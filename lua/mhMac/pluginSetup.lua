@@ -17,7 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(plugins)
 require 'nvim-web-devicons'.get_icons()
-require 'lspconfig'.pyright.setup {}
 autocmd('LspAttach', {
         group = mhNvim,
         callback = function(e)
