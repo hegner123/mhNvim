@@ -6,6 +6,9 @@ Lazy
 ## Theme
 Kanagawa - Dragon
 
+## TODO
+<leader>pv with dialog open freezes dialog ui
+
 ### Plugins
 * alda
 * cellular_automation
